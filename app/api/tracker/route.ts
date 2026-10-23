@@ -1,5 +1,5 @@
 import { hasSession } from '../../diary-auth';
-import { env } from 'cloudflare:workers';
+import { getRuntimeSecrets } from '#platform';
 import { issueTicket, verifyTicket } from '../../write-ticket';
 import { getDb } from '../../../db';
 import { preferences, doses } from '../../../db/schema';
@@ -14,7 +14,7 @@ async function diaryUserId(){
  const m=await db.select({userId:doses.userId}).from(doses).limit(1);
  return m[0]?.userId||'shared-diary';
 }
-function signingSecret(){const secret=(env as unknown as {DIARY_ACTION_SECRET?:string}).DIARY_ACTION_SECRET;if(!secret)throw Error('Не настроен ключ доступа дневника');return secret;}
+function signingSecret(){const secret=getRuntimeSecrets().DIARY_ACTION_SECRET;if(!secret)throw Error('Не настроен ключ доступа дневника');return secret;}
 export async function GET() {
  if(!await hasSession())return Response.json({error:'Требуется вход'},{status:401,headers:{'Cache-Control':'no-store'}});
  const user={userId:await diaryUserId()};

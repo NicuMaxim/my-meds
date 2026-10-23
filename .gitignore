@@ -1,5 +1,5 @@
 # Dependencies and generated output
-node_modules/
+node_modules
 dist/
 .next/
 out/
@@ -24,6 +24,7 @@ next-env.d.ts
 *.sqlite3
 *.sqlite-*
 backups/
+data/
 
 # Logs and editor state
 *.log

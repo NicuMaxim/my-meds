@@ -1,0 +1,19 @@
+[Unit]
+Description=My Meds medication diary
+After=network.target
+
+[Service]
+Type=simple
+User=my-meds
+Group=my-meds
+WorkingDirectory=/opt/my-meds
+Environment=NODE_ENV=production
+EnvironmentFile=/opt/my-meds/.env
+ExecStart=/usr/bin/node /opt/my-meds/scripts/start-selfhost.mjs
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target
