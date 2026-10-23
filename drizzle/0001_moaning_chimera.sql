@@ -1,0 +1,1 @@
+ALTER TABLE `doses` ADD `dose` text;

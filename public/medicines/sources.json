@@ -1,0 +1,37 @@
+[
+  {
+    "id": "pramistar",
+    "product": "Pramistar 600mg comp.film.",
+    "source": "https://ff.md/products/pramistar-600mg-compfilm",
+    "originalImage": "https://cdn.shopify.com/s/files/1/0377/7092/0076/files/114130.jpg?v=1750848899",
+    "file": "public/medicines/pramistar.jpg"
+  },
+  {
+    "id": "magnilon",
+    "product": "Magnilon forte caps.",
+    "source": "https://ff.md/products/magnilon-forte-caps",
+    "originalImage": "https://cdn.shopify.com/s/files/1/0377/7092/0076/files/106835.jpg?v=1750848059",
+    "file": "public/medicines/magnilon.jpg"
+  },
+  {
+    "id": "mydocalm",
+    "product": "Mydocalm 150mg comp.film.",
+    "source": "https://ff.md/products/mydocalm-150mg-compfilm",
+    "originalImage": "https://cdn.shopify.com/s/files/1/0377/7092/0076/files/5494.jpg?v=1750849940",
+    "file": "public/medicines/mydocalm.jpg"
+  },
+  {
+    "id": "sedoxil",
+    "product": "Sedoxil 1mg comp.",
+    "source": "https://ff.md/products/sedoxil-1mg-comp",
+    "originalImage": "https://cdn.shopify.com/s/files/1/0377/7092/0076/files/68644.jpg?v=1710948109",
+    "file": "public/medicines/sedoxil.jpg"
+  },
+  {
+    "id": "neurocalmin",
+    "product": "Nervocalmin Somn usor 80mg+3mg Valeriana, melatonina caps.",
+    "source": "https://ff.md/products/nervocalmin-somn-usor-80mg-3mg-valeriana-melatonina-caps",
+    "originalImage": "https://cdn.shopify.com/s/files/1/0377/7092/0076/files/74222.jpg?v=1790665059",
+    "file": "public/medicines/neurocalmin.jpg"
+  }
+]

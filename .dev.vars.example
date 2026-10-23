@@ -1,0 +1,5 @@
+# Copy to .dev.vars and fill in your own values. This file contains examples only.
+DIARY_LOGIN="your-login"
+DIARY_PASSWORD="replace-with-a-long-unique-password"
+# Generate with: node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"
+DIARY_ACTION_SECRET="replace-with-a-random-secret-of-at-least-32-characters"
