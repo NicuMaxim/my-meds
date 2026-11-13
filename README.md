@@ -8,6 +8,8 @@ My Meds keeps one private diary behind a username and password. Check off doses 
 
 The current preset contains Pramistar, Magnilon Forte, Mydocalm, Sedoxil, and Nervocalmin Somn Ușor. Bedtime options and Sedoxil dose selection are supported. Package photographs in the Medicines view can be disabled in settings. These presets describe the existing personal workflow; they are not medication recommendations.
 
+The Course settings offer three bedtime modes: Sedoxil, Nervocalmin, or **Choose nightly: Nervocalmin / Sedoxil**. In the third mode, Nervocalmin follows its configured course while Sedoxil can be recorded as needed, without its own course dates. Sedoxil still prompts for ½ or 1 tablet. Record the medicine actually taken; its date and dose remain in that medicine's history. Changing the mode preserves all earlier entries. The daily progress counts either bedtime choice once while a Nervocalmin course is active; optional Sedoxil alone does not create an outstanding daily requirement. These are tracking options, not guidance on combining medicines.
+
 ## Hosting options
 
 One codebase supports two independent deployment targets:

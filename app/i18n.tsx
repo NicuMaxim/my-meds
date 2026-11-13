@@ -2,6 +2,13 @@
 import {createContext,useContext,useEffect,useState} from 'react';
 export type Language='ru'|'en';
 export const english:Record<string,string>={
+ 'На выбор: Nervocalmin / Sedoxil':'Choose nightly: Nervocalmin / Sedoxil',
+ 'В этом режиме Nervocalmin идёт по курсу, а Sedoxil доступен для разовых отметок без курса.':'In this mode, Nervocalmin follows its course; Sedoxil is available for as-needed entries without a course.',
+ 'Отметьте фактически принятый препарат. Каждый приём сохранится в истории своего лекарства.':'Record the medicine you actually took. Each dose is saved in that medicine’s history.',
+ 'Разовый приём · без курса':'As needed · no course',
+ 'Только разовые приёмы':'As-needed doses only',
+ 'приёмов отмечено всего':'doses recorded in total',
+ 'Завершение курса убирает плановые приёмы из дневника. Разовый Sedoxil в режиме «На выбор» остаётся доступным; история сохраняется.':'When a course ends, its scheduled doses leave the diary. As-needed Sedoxil remains available in Choose nightly mode; history is kept.',
  'Оформление':'Appearance','Фотографии упаковок':'Package photos','Показывать коробки вместо значков в разделе «Лекарства».':'Show medicine boxes instead of icons in Medicines.',
  'Загружаем дневник…':'Loading diary…',
  'Не удалось загрузить дневник. Обновите страницу.':'Could not load the diary. Refresh the page.',

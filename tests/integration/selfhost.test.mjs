@@ -60,12 +60,26 @@ test('built self-hosted server authenticates, persists settings and doses, and h
     assert.equal((await write({ ...mark, taken: false })).status, 200);
     assert.equal((await read()).marks[0].taken, 0);
     assert.equal((await write({ ...mark, dose: '1' })).status, 200);
-    const settings = { ...initial.settings, showPackageImages: false };
+    const settings = { ...initial.settings, night: 'both', showPackageImages: false,
+      courses: { ...initial.settings.courses,
+        sedoxil: { start: '2026-01-01', days: 10 },
+        neurocalmin: { start: '2026-11-13', days: 20 },
+      },
+    };
     assert.equal((await write({ type: 'settings', settings })).status, 200);
+    const occasional = { ...mark, date: '2026-11-14', dose: '0.5' };
+    assert.equal((await write({ ...occasional, dose: '2' })).status, 400);
+    assert.equal((await write(occasional)).status, 200);
+    assert.equal((await write({ type: 'mark', date: '2026-11-13', slot: 'neurocalmin-night', taken: true })).status, 200);
+    assert.equal((await write({ type: 'settings', settings: { ...settings, night: 'invalid' } })).status, 400);
     await stop();
     await start();
     const restored = await read();
     assert.equal(restored.settings.showPackageImages, false);
+    assert.equal(restored.settings.night, 'both');
+    assert.deepEqual(restored.settings.courses.neurocalmin, { start: '2026-11-13', days: 20 });
+    assert.equal(restored.marks.find(row => row.date === occasional.date && row.slot === occasional.slot).dose, '0.5');
+    assert.equal(restored.marks.find(row => row.date === '2026-11-13' && row.slot === 'neurocalmin-night').taken, 1);
     assert.equal(restored.marks[0].taken, 1);
     assert.equal(restored.marks[0].dose, '1');
     response = await fetch(base + '/api/login', {

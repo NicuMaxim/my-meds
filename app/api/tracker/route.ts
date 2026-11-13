@@ -4,7 +4,7 @@ import { issueTicket, verifyTicket } from '../../write-ticket';
 import { getDb } from '../../../db';
 import { preferences, doses } from '../../../db/schema';
 import { eq } from 'drizzle-orm';
-import { defaults, validDate, slotIds } from '../../model';
+import { defaults, validDate, slotIds, validNight } from '../../model';
 export const dynamic = 'force-dynamic';
 // Resolve the single diary stored in this database.
 async function diaryUserId(){
@@ -35,7 +35,7 @@ export async function POST(req:Request) {
  await db.insert(doses).values({userId:user.userId,date:body.date,slot:body.slot,taken:body.taken?1:0,dose}).onConflictDoUpdate({target:[doses.userId,doses.date,doses.slot],set:{taken:body.taken?1:0,dose}});
  } else if(body.type==='settings') {
  const s=body.settings;
- if(!s || (s.showPackageImages!==undefined&&typeof s.showPackageImages!=='boolean') || !['sedoxil','neurocalmin'].includes(s.night)||!s.courses) throw Error('Некорректные настройки');
+ if(!s || (s.showPackageImages!==undefined&&typeof s.showPackageImages!=='boolean') || !validNight(s.night)||!s.courses) throw Error('Некорректные настройки');
  for(const key of ['pramistar','magnilon','mydocalm','sedoxil','neurocalmin']) {const c=s.courses[key]; if(!c||!validDate(c.start)||!Number.isInteger(c.days)||c.days<1||c.days>365) throw Error('Проверьте даты и длительность курса');}
  const data=JSON.stringify({night:s.night,courses:s.courses,showPackageImages:s.showPackageImages!==false});
  await db.insert(preferences).values({userId:user.userId,data}).onConflictDoUpdate({target:preferences.userId,set:{data}});
